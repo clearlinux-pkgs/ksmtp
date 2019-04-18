@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ksmtp
-Version  : 18.12.3
-Release  : 6
-URL      : https://download.kde.org/stable/applications/18.12.3/src/ksmtp-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/ksmtp-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/ksmtp-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 19.04.0
+Release  : 7
+URL      : https://download.kde.org/stable/applications/19.04.0/src/ksmtp-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/ksmtp-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/ksmtp-19.04.0.tar.xz.sig
+Summary  : Job-based library to send email through an SMTP server
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: ksmtp-data = %{version}-%{release}
@@ -38,6 +38,7 @@ Group: Development
 Requires: ksmtp-lib = %{version}-%{release}
 Requires: ksmtp-data = %{version}-%{release}
 Provides: ksmtp-devel = %{version}-%{release}
+Requires: ksmtp = %{version}-%{release}
 
 %description dev
 dev components for the ksmtp package.
@@ -70,23 +71,22 @@ locales components for the ksmtp package.
 
 
 %prep
-%setup -q -n ksmtp-18.12.3
+%setup -q -n ksmtp-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552006637
+export SOURCE_DATE_EPOCH=1555620480
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552006637
+export SOURCE_DATE_EPOCH=1555620480
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksmtp
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/ksmtp/COPYING.LIB
@@ -126,7 +126,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKPimSMTP.so.5
-/usr/lib64/libKPimSMTP.so.5.10.3
+/usr/lib64/libKPimSMTP.so.5.11.0
 
 %files license
 %defattr(0644,root,root,0755)
