@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ksmtp
-Version  : 21.04.0
-Release  : 29
-URL      : https://download.kde.org/stable/release-service/21.04.0/src/ksmtp-21.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.0/src/ksmtp-21.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.0/src/ksmtp-21.04.0.tar.xz.sig
+Version  : 21.04.2
+Release  : 30
+URL      : https://download.kde.org/stable/release-service/21.04.2/src/ksmtp-21.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.2/src/ksmtp-21.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.2/src/ksmtp-21.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : CC0-1.0 LGPL-2.0 LGPL-2.1
+License  : BSD-3-Clause CC0-1.0 LGPL-2.0 LGPL-2.1
 Requires: ksmtp-data = %{version}-%{release}
 Requires: ksmtp-lib = %{version}-%{release}
 Requires: ksmtp-license = %{version}-%{release}
@@ -76,15 +76,15 @@ locales components for the ksmtp package.
 
 
 %prep
-%setup -q -n ksmtp-21.04.0
-cd %{_builddir}/ksmtp-21.04.0
+%setup -q -n ksmtp-21.04.2
+cd %{_builddir}/ksmtp-21.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1619156682
+export SOURCE_DATE_EPOCH=1623353395
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -100,12 +100,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1619156682
+export SOURCE_DATE_EPOCH=1623353395
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksmtp
-cp %{_builddir}/ksmtp-21.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ksmtp/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/ksmtp-21.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/ksmtp-21.04.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/ksmtp-21.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksmtp/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/ksmtp-21.04.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ksmtp/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/ksmtp-21.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/ksmtp-21.04.2/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/6f1f675aa5f6a2bbaa573b8343044b166be28399
 pushd clr-build
 %make_install
 popd
@@ -142,11 +143,12 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKPimSMTP.so.5
-/usr/lib64/libKPimSMTP.so.5.17.0
+/usr/lib64/libKPimSMTP.so.5.17.2
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/ksmtp/20079e8f79713dce80ab09774505773c926afa2a
+/usr/share/package-licenses/ksmtp/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/ksmtp/6f1f675aa5f6a2bbaa573b8343044b166be28399
 /usr/share/package-licenses/ksmtp/8287b608d3fa40ef401339fd907ca1260c964123
 
