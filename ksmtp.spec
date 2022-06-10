@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ksmtp
-Version  : 22.04.1
-Release  : 40
-URL      : https://download.kde.org/stable/release-service/22.04.1/src/ksmtp-22.04.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.1/src/ksmtp-22.04.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.1/src/ksmtp-22.04.1.tar.xz.sig
+Version  : 22.04.2
+Release  : 41
+URL      : https://download.kde.org/stable/release-service/22.04.2/src/ksmtp-22.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.2/src/ksmtp-22.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.2/src/ksmtp-22.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0 LGPL-2.1
@@ -24,6 +24,7 @@ BuildRequires : extra-cmake-modules-data
 BuildRequires : kcoreaddons-dev
 BuildRequires : ki18n-dev
 BuildRequires : kio-dev
+BuildRequires : qt6base-dev
 
 %description
 No detailed description available
@@ -75,15 +76,15 @@ locales components for the ksmtp package.
 
 
 %prep
-%setup -q -n ksmtp-22.04.1
-cd %{_builddir}/ksmtp-22.04.1
+%setup -q -n ksmtp-22.04.2
+cd %{_builddir}/ksmtp-22.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652639593
+export SOURCE_DATE_EPOCH=1654826292
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -99,15 +100,15 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1652639593
+export SOURCE_DATE_EPOCH=1654826292
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ksmtp
-cp %{_builddir}/ksmtp-22.04.1/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksmtp/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
-cp %{_builddir}/ksmtp-22.04.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/ksmtp/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/ksmtp-22.04.1/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ksmtp/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/ksmtp-22.04.1/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/ksmtp-22.04.1/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/ksmtp-22.04.1/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/ksmtp/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/ksmtp-22.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/ksmtp/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
+cp %{_builddir}/ksmtp-22.04.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/ksmtp/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/ksmtp-22.04.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/ksmtp/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/ksmtp-22.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/ksmtp-22.04.2/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/ksmtp/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/ksmtp-22.04.2/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/ksmtp/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -144,7 +145,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKPimSMTP.so.5
-/usr/lib64/libKPimSMTP.so.5.20.1
+/usr/lib64/libKPimSMTP.so.5.20.2
 
 %files license
 %defattr(0644,root,root,0755)
